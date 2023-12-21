@@ -44,6 +44,7 @@
     "react-native-tab-view": "^3.5.2",
     "react-native-vector-icons": "^10.0.3",
     "react-native-webview": "^13.6.3",
+    "react-navigation-core": "^0.0.1-security",
     "victory": "^36.7.0",
     "victory-native": "^36.7.0",
     "victory-zoom-container": "^36.7.0"

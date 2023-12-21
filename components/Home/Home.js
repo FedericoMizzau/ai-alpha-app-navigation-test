@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, ScrollView, Text, StyleSheet} from 'react-native';
 import TickerTape from './Tickertape/TickerTape';
 import styles from './HomeStyles';
@@ -8,30 +8,25 @@ import {TopMenuContext} from '../../context/topMenuContext';
 import TopTenGainers from './TopTenGainers/TopTenGainers';
 import PriceAction from './PriceAction/PriceAction';
 import TopMenu from './Topmenu/mainMenu/topmenu';
-import SubMenu from './Topmenu/subMenu/SubMenu';
 
 const Home = () => {
-  const {activeCoin} = useContext(TopMenuContext);
+  const {activeCoin, updateActiveCoin} = useContext(TopMenuContext);
   const hasProperties = Object.keys(activeCoin).length > 0;
 
   return (
     <View>
-      <TopMenu /> 
-      {hasProperties ? (
-        <SubMenu />
-      ) : (
-        <ScrollView
-          bounces={false}
-          alwaysBounceVertical={false}
-          showsVerticalScrollIndicator={false}
-          style={styles.container}>
-          <TickerTape />
-          <TopStories />
-          <Analysis />
-          <TopTenGainers />
-          <PriceAction />
-        </ScrollView>
-      )}
+      <TopMenu />
+      <ScrollView
+        bounces={false}
+        alwaysBounceVertical={false}
+        showsVerticalScrollIndicator={false}
+        style={styles.container}>
+        <TickerTape />
+        <TopStories />
+        <Analysis />
+        <TopTenGainers />
+        <PriceAction />
+      </ScrollView>
     </View>
   );
 };

@@ -2,13 +2,11 @@ import React, {useContext, useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {TopMenuContext} from '../../../../context/topMenuContext';
 import CoinMenu from './coinMenu/coinMenu';
-import CandlestickChart from './Fund_news_chart/Charts';
-import Fundamentals from './Fund_news_chart/Fundamentals/Fundamentals';
-import NewsComponent from './Fund_news_chart/News';
+import CoinMenuCategories from './coinMenuCategories/subMenu';
 
 const SubMenu = () => {
   const {activeCoin} = useContext(TopMenuContext);
-  const [activeTab, setActiveTab] = useState('Charts'); // X
+  const [activeTab, setActiveTab] = useState('Charts');
 
   useEffect(() => {
     if (activeCoin.coin_bots && activeCoin.coin_bots.length >= 1) {
@@ -29,13 +27,6 @@ const SubMenu = () => {
         setActiveSubCoin={setActiveSubCoin}
         subCoins={activeCoin.coin_bots}
       />
-
-      {/* Add fundamentals and news here */}
-      {activeTab === 'Charts' && (
-        <CandlestickChart interval={'1h'} symbol={`${activeSubCoin}USDT`} coinBot={activeSubCoin} />
-      )}
-      {activeTab === 'Fundamentals' && <Fundamentals />}
-      {activeTab === 'News' && <NewsComponent  botname={activeSubCoin}/>}
     </View>
   );
 };

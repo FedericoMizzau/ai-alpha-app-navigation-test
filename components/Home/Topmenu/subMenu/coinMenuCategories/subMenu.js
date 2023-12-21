@@ -1,13 +1,14 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './subMenuStyles';
-import {useNavigation} from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/core';
 
 const CoinMenuCategories = ({activeTab, setActiveTab}) => {
-  const {navigation} = useNavigation();
-
+  
+  const navigation = useNavigation();
+  
   const onMenuTabPressed = tabOption => {
-    setActiveTab('Fundamentals');
+    setActiveTab(tabOption);
     navigation.navigate(tabOption);
   };
 
