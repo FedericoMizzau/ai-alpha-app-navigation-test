@@ -1,16 +1,8 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import styles from './subMenuStyles';
-import { useNavigation } from '@react-navigation/core';
+import styles from './SectionsMenuStyles';
 
-const CoinMenuCategories = ({activeTab, setActiveTab}) => {
-  
-  const navigation = useNavigation();
-  
-  const onMenuTabPressed = tabOption => {
-    setActiveTab(tabOption);
-    navigation.navigate(tabOption);
-  };
+const SectionsMenu = ({activeTab, onMenuTabPressed}) => {
 
   return (
     <View style={styles.container}>
@@ -55,4 +47,4 @@ const CoinMenuCategories = ({activeTab, setActiveTab}) => {
   );
 };
 
-export default CoinMenuCategories;
+export default SectionsMenu;

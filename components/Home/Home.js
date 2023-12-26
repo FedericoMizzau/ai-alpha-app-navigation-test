@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, ScrollView, Text, StyleSheet} from 'react-native';
+import {View, ScrollView, Text, StyleSheet, SafeAreaView} from 'react-native';
 import TickerTape from './Tickertape/TickerTape';
 import styles from './HomeStyles';
 import TopStories from './TopStories/topStories';
@@ -14,8 +14,7 @@ const Home = () => {
   const hasProperties = Object.keys(activeCoin).length > 0;
 
   return (
-    <View>
-      <TopMenu />
+    <SafeAreaView>
       <ScrollView
         bounces={false}
         alwaysBounceVertical={false}
@@ -27,7 +26,7 @@ const Home = () => {
         <TopTenGainers />
         <PriceAction />
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 

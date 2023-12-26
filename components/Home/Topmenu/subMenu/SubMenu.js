@@ -2,11 +2,13 @@ import React, {useContext, useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {TopMenuContext} from '../../../../context/topMenuContext';
 import CoinMenu from './coinMenu/coinMenu';
-import CoinMenuCategories from './coinMenuCategories/subMenu';
+// import SectionsMenu from './SectionsMenu/SectionsMenu';
+import {useNavigation} from '@react-navigation/core';
+
+// All the commented lines may be deleted
 
 const SubMenu = () => {
   const {activeCoin} = useContext(TopMenuContext);
-  const [activeTab, setActiveTab] = useState('Charts');
 
   useEffect(() => {
     if (activeCoin.coin_bots && activeCoin.coin_bots.length >= 1) {
@@ -18,15 +20,23 @@ const SubMenu = () => {
     activeCoin.coin_bots && activeCoin.coin_bots[0].bot_name,
   );
 
+  const navigation = useNavigation();
+
+  // const onMenuTabPressed = section => {
+  //   navigation.navigate(section);
+  // };
+
+
   return (
     <View style={styles.container}>
-      <CoinMenu
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        activeSubCoin={activeSubCoin}
-        setActiveSubCoin={setActiveSubCoin}
-        subCoins={activeCoin.coin_bots}
-      />
+      {activeCoin.coin_bots && activeCoin.coin_bots.length >= 1 && (
+        <CoinMenu
+          activeSubCoin={activeSubCoin}
+          setActiveSubCoin={setActiveSubCoin}
+          subCoins={activeCoin.coin_bots}
+        />
+      )}
+      {/* <SectionsMenu activeTab={activeTab} onMenuTabPressed={onMenuTabPressed} /> */}
     </View>
   );
 };

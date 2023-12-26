@@ -10,7 +10,6 @@ const TopMenu = () => {
   const {updateActiveCoin} = useContext(TopMenuContext);
   const [categories, setCategories] = useState([]);
   const navigation = useNavigation();
-  
 
   const handleButtonPress = category => {
     updateActiveCoin(category);
